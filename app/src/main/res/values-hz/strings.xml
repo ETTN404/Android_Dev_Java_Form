@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ombuudi Yomahandje</string>
+    <string name="name">Oritjina ropombanda</string>
+    <string name="email">Imeyili</string>
+    <string name="password">Omambo</string>
+    <string name="date">Ozuva wokuzekesa</string>
+    <string name="upload">Tumitha omukandjo</string>
+    <string name="Register">Rekistera</string>
+    <string name="moto">Fata omambo, hinga orutumba rwoye!</string>
+    <string name="mob">Oshigwela shomukwatho oshiAndroid</string> <!-- Herero -->
+    <string name="getStarted">Tjovipira</string> <!-- Herero -->
+    <string name="create">Otwala nene</string> <!-- Herero -->
+    <string name="av">Ota ta shimalwa</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string> <!-- Herero -->
+</resources>
+
+    <!-- Herero   -->

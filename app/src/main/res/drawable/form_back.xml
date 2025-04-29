@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background image -->
+    <item>
+        <bitmap
+            android:src="@drawable/form_pic"
+            android:gravity="fill"
+            android:tileMode="disabled" />
+    </item>
+
+    <!-- Transparent color overlay -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#CC000000" /> <!-- semi-transparent black -->
+            <corners android:radius="16dp" /> <!-- if you want curved corners -->
+        </shape>
+    </item>
+
+</layer-list>

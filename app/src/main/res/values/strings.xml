@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Form</string>
+    <string name="name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="date">Date of Birth</string>
+    <string name="upload">Upload a Picture</string>
+    <string name="Register">Register</string>
+    <string name="moto">Fill the form build your profile!</string>
+    <string name="mob">Mobile app development in Android</string>
+    <string name="getStarted">Get Started</string>
+    <string name="create">Create an account</string>
+    <string name="av">Available languages</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string>
+
+</resources><!--    English     -->

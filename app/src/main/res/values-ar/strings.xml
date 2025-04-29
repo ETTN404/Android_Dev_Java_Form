@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">نموذجي</string>
+    <string name="name">الاسم الكامل</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="date">تاريخ الميلاد</string>
+    <string name="upload">تحميل صورة</string>
+    <string name="Register">تسجيل</string>
+    <string name="moto">املأ النموذج، أنشئ ملفك الشخصي!</string>
+    <string name="mob">تطوير تطبيقات الهاتف المحمول في أندرويد</string> <!-- Arabic -->
+    <string name="getStarted">ابدأ الآن</string> <!-- Arabic -->
+    <string name="create">إنشاء حساب</string> <!-- Arabic -->
+    <string name="av">اللغات المتاحة</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string> <!-- Arabic -->
+</resources>
+    <!--    Arabic     -->

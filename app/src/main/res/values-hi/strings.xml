@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">माई फॉर्म</string>
+    <string name="name">पूरा नाम</string>
+    <string name="email">ईमेल</string>
+    <string name="password">पासवर्ड</string>
+    <string name="date">जन्म तिथि</string>
+    <string name="upload">चित्र अपलोड करें</string>
+    <string name="Register">पंजीकरण करें</string>
+    <string name="moto">फॉर्म भरें, अपनी प्रोफ़ाइल बनाएं!</string>
+    <string name="mob">एंड्रॉइड में मोबाइल ऐप विकास</string> <!-- Hindi -->
+    <string name="getStarted">शुरू करें</string> <!-- Hindi -->
+    <string name="create">खाता बनाएं</string> <!-- Hindi -->
+    <string name="av">उपलब्ध भाषाएं</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string> <!-- Hindi -->
+</resources>
+
+    <!-- Hindii-->

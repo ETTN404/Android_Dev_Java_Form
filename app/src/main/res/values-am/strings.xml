@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">የእቅድ ቅፅ</string>
+    <string name="name">ሙሉ ስም</string>
+    <string name="email">ኢሜይል</string>
+    <string name="password">የይለፍ ቃል</string>
+    <string name="date">የትውልድ ቀን</string>
+    <string name="upload">ፎቶ አስገባ</string>
+    <string name="Register">መመዝገብ</string>
+    <string name="moto">ቅጽን ሙሉ አድርጉ ፣ መገለጫዎን ይገነቡ!</string>
+    <string name="mob">በአንድሮይድ እትም አፕ ስለመስራት </string> <!-- Amharic -->
+    <string name="getStarted">መጀመሪያ እንቁላል</string> <!-- Amharic -->
+    <string name="create">መጠቀም አካውንት ፍጠር</string> <!-- Amharic -->
+    <string name="av">ያሉት ቋንቋዎች</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string> <!-- Amharic -->
+</resources>
+    <!--        Amharic     -->

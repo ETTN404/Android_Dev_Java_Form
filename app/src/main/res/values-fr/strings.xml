@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mon Formulaire</string>
+    <string name="name">Nom complet</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="date">Date de naissance</string>
+    <string name="upload">Télécharger une photo</string>
+    <string name="Register">S`inscrire</string>
+    <string name="moto">Remplissez le formulaire, créez votre profil !</string>
+    <string name="mob">Développement d`applications mobiles sur Android</string> <!-- French -->
+    <string name="getStarted">Commencer</string> <!-- French -->
+    <string name="create">Créer un compte</string> <!-- French -->
+    <string name="av">Langues disponibles</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="show">Show</string>
+    <string name="copy">copy</string> <!-- French -->
+</resources>
+    <!--     French     -->
