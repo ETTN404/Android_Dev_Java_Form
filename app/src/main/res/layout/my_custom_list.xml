@@ -2,21 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout_custom"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingVertical="22dp">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="134dp"
-        android:layout_height="144dp"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
         android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
-        android:src="@drawable/form_pic"
+        android:background="@drawable/circle_background"
+        android:clipToOutline="true"
+        android:contentDescription="@string/create"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
     <TextView
         android:id="@+id/name"
@@ -28,14 +33,14 @@
         android:drawablePadding="10dp"
         android:text="email"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
-        android:drawableStart="@drawable/lock_password_unlocked_svgrepo_com2"
+        android:drawableStart="@drawable/baseline_attach_email_242"
         android:drawablePadding="10dp"
         android:text="password"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -46,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:drawableStart="@drawable/baseline_attach_email_242"
+        android:drawableStart="@drawable/lock_password_unlocked_svgrepo_com2"
         android:drawablePadding="10dp"
         android:text="date"
         app:layout_constraintStart_toStartOf="@+id/email"
@@ -60,9 +65,41 @@
         android:drawableStart="@drawable/date_2_svgrepo_com2"
         android:drawablePadding="10dp"
         android:text="date"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+
+    <ImageView
+        android:id="@+id/message"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Button"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/call"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/mail_2811016" />
+
+    <ImageView
+        android:id="@+id/call"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="Button"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/calling_17909370" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="16dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

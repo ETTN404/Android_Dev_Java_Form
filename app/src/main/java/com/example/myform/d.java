@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,17 +31,7 @@ public class d extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         gson=new Gson();
         prefs= PreferenceManager.getDefaultSharedPreferences(this);
-        // Apply transparent status bar
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Window window = getWindow();
-//            window.getDecorView().setSystemUiVisibility(
-//                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION // hide layout behind bottom nav bar too
-//            );
-//            window.setStatusBarColor(Color.TRANSPARENT); // top bar
-//            window.setNavigationBarColor(Color.TRANSPARENT); // bottom nav bar
-//        }
+
     }
     protected void dateformat(Calendar calendar, Context context, TextView view){
         int year=calendar.get(Calendar.YEAR);
@@ -69,6 +60,18 @@ public class d extends AppCompatActivity {
         prefs.edit().putString(string,gson.toJson(fileObjectArray)).apply();
         return true;
     }
+    public void addImage(Uri imageUri){
+        String a=imageUri.toString();
+        List<file> list;
+        String string=prefs.getString("file",null);
+        if(string!=null){
+           list=gson.fromJson(string,new TypeToken<List<file>>(){}.getType());
+           if(list != null && !list.isEmpty()){
+               list.get(list.size()-1).Picture=a;
+               prefs.edit().putString("file",gson.toJson(list)).apply();
+           }
+        }
+    }
     protected void deleteFile(int position){
         String json=prefs.getString("file",null);
         if(json!=null){
@@ -81,8 +84,11 @@ public class d extends AppCompatActivity {
         }
 
     }
-    protected List<file> getFromFile(String string){
-        String json=prefs.getString(string,null);
+    public void deletefile(){
+        prefs.edit().clear().apply();
+    }
+    protected List<file> getFromFile(){
+        String json=prefs.getString("file",null);
         List<file> getfile=new ArrayList<>();
         if(json!=null){
             getfile=gson.fromJson(json,new TypeToken<List<file>>(){}.getType());
@@ -91,20 +97,3 @@ public class d extends AppCompatActivity {
     }
 }
 
-
-
-// Apply to fully hide the status and bottom nav bar
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Window window = getWindow();
-//            window.getDecorView().setSystemUiVisibility(
-//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-//                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//            );
-//            window.setStatusBarColor(Color.TRANSPARENT);
-//            window.setNavigationBarColor(Color.TRANSPARENT);
-//        }

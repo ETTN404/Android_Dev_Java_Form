@@ -1,6 +1,7 @@
 package com.example.myform;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,12 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.bumptech.glide.Glide;
+import com.example.myform.databinding.MyCustomListBinding;
 
 import java.util.List;
 
@@ -24,8 +30,6 @@ public class Eyob extends ArrayAdapter<file> {
     private int currentPosition;
     private ActionMode actionMode;
     private Context context;
-    private TextView name, email, password, date;
-    private ConstraintLayout cl;
 
     public Eyob(Context context, List<file> people){
         super(context,0,people);
@@ -35,32 +39,48 @@ public class Eyob extends ArrayAdapter<file> {
     public void onClick(int position){
 
     }
+    public void deleter(){
+
+    }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         file File=people.get(position);
+        MyCustomListBinding binding;
 
         if(convertView==null){
-            convertView=LayoutInflater.from(getContext()).inflate(R.layout.activity_my_custom_list, parent,false);
+            LayoutInflater inflate=LayoutInflater.from(getContext());
+            binding=MyCustomListBinding.inflate(inflate,parent,false);
+            convertView=binding.getRoot();
+            convertView.setTag(binding);
         }
-        name=convertView.findViewById(R.id.name);
-        name.setText(File.Full_name);
-        email=convertView.findViewById(R.id.email);
-        email.setText(File.Email);
-        date=convertView.findViewById(R.id.date);
-        date.setText(File.Calendar);
-        password=convertView.findViewById(R.id.password);
-        password.setText(File.Password);
-        cl=convertView.findViewById(R.id.main_layout_custom);
-        cl.setOnLongClickListener(v->{
+        else{
+            binding=(MyCustomListBinding)convertView.getTag();
+        }
+
+        binding.name.setText(File.Full_name);
+        binding.email.setText(File.Email);
+        binding.date.setText(File.Calendar);
+        binding.password.setText(File.Password);
+        if(File.Picture!=null){
+            Glide.with(context)
+                .load(Uri.parse(File.Picture))
+                .into(binding.imageView);
+        }
+        binding.counter.setText(String.valueOf(position+1));
+        binding.layout.setOnLongClickListener(v->{
             currentPosition=position;
             if(actionMode!=null) return false;
-
-            actionMode= cl.startActionMode(actionmodecallback);
+            actionMode= binding.layout.startActionMode(actionmodecallback);
             v.setSelected(true);
-////            onClick(position);
             return true;
+        });
+        binding.call.setOnClickListener(v->{
+            Toast.makeText(context, "Calling........", Toast.LENGTH_SHORT).show();
+        });
+        binding.message.setOnClickListener(v->{
+            Toast.makeText(context, "Sending........", Toast.LENGTH_SHORT).show();
         });
 
         return convertView;
@@ -84,7 +104,10 @@ public class Eyob extends ArrayAdapter<file> {
             int a=item.getItemId();
             if(a==R.id.action_delete){
                 onClick(currentPosition);
+            } else if(a==R.id.action_Edit){
+                deleter();
             }
+            mode.finish();
             return true;
         }
 

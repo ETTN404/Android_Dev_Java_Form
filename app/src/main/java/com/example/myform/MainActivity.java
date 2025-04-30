@@ -3,6 +3,7 @@ package com.example.myform;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,5 +40,11 @@ public class MainActivity extends d {
         b.GetStarted.setOnClickListener(v -> {
             startActivity(new Intent(this, Form.class));
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 }

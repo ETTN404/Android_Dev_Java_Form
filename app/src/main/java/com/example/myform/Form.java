@@ -1,6 +1,8 @@
 package com.example.myform;
 
+import android.app.ComponentCaller;
 import android.app.DatePickerDialog;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -39,6 +41,8 @@ public class Form extends d {
     String Tdate,Tpass,Tmail,Tname,CheckLanguage;
     MyAppLa myAppLa;
     private Intent i;
+    Uri oldImage=null;
+    String uriString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,25 +52,48 @@ public class Form extends d {
         b.back.setOnClickListener(v->{
             finish();
         });
+        b.upload.setOnClickListener(v->{
+            Intent intent=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,20);
+        });
+
+        b.upload.setOnLongClickListener(v->{
+
+            return true;
+        });
+        b.back.setOnLongClickListener(v->{
+            return true;
+        });
         b.Date.setOnClickListener(v->dateformat(calendar,this,b.Date));
 
-//        b.upload.setOnClickListener(v->{
-//            openImageChooser();
-//        });
         b.register.setOnClickListener(v->{
             Tdate= b.Date.getText().toString();
             Tmail=b.email.getText().toString();
             Tpass=b.password.getText().toString();
             Tname=b.name.getText().toString();
-            file File=new file(Tname,Tmail,Tdate,Tpass,33);
+            file File;
+            if(oldImage!=null && uriString!=null){
+                File=new file(Tname,Tmail,Tdate,Tpass,uriString);
+            }
+                else{
+                File=new file(Tname,Tmail,Tdate,Tpass,null);
+            }
             putToFile(File,"file");
             Toast.makeText(this, "your data have been saved", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,display.class));
         });
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data != null && data.getData() != null) {
+            oldImage = data.getData();
+            uriString = oldImage.toString();
+            b.isuploaded.setText(oldImage.toString());
+        }
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
