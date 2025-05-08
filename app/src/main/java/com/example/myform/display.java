@@ -28,12 +28,20 @@ public class display extends d {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EdgeToEdge.enable(this);
         b=ActivityDisplayBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right,0);
+            return insets;
+        });
         file=getFromFile();
         adapterCustom=new Eyob(this,file){
             @Override
             public void onClick(int position) {
+
                 deleteFile(position);
                 file.remove(position);
                 adapterCustom.notifyDataSetChanged();

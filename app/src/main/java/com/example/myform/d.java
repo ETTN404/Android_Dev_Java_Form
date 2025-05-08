@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
@@ -17,9 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class d extends AppCompatActivity {
 
@@ -60,18 +66,18 @@ public class d extends AppCompatActivity {
         prefs.edit().putString(string,gson.toJson(fileObjectArray)).apply();
         return true;
     }
-    public void addImage(Uri imageUri){
-        String a=imageUri.toString();
-        List<file> list;
-        String string=prefs.getString("file",null);
-        if(string!=null){
-           list=gson.fromJson(string,new TypeToken<List<file>>(){}.getType());
-           if(list != null && !list.isEmpty()){
-               list.get(list.size()-1).Picture=a;
-               prefs.edit().putString("file",gson.toJson(list)).apply();
-           }
-        }
-    }
+//    public void addImage(Uri imageUri){
+//        String a=imageUri.toString();
+//        List<file> list;
+//        String string=prefs.getString("file",null);
+//        if(string!=null){
+//           list=gson.fromJson(string,new TypeToken<List<file>>(){}.getType());
+//           if(list != null && !list.isEmpty()){
+//               list.get(list.size()-1).Picture=a;
+//               prefs.edit().putString("file",gson.toJson(list)).apply();
+//           }
+//        }
+//    }
     protected void deleteFile(int position){
         String json=prefs.getString("file",null);
         if(json!=null){
@@ -95,5 +101,6 @@ public class d extends AppCompatActivity {
         }
         return getfile;
     }
+
 }
 

@@ -34,9 +34,16 @@ public class MainActivity extends d {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         b=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, 0, systemBars.right,0);
+            return insets;
+        });
         b.GetStarted.setOnClickListener(v -> {
             startActivity(new Intent(this, Form.class));
         });

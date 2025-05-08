@@ -1,6 +1,7 @@
 package com.example.myform;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
@@ -67,6 +69,7 @@ public class Eyob extends ArrayAdapter<file> {
             Glide.with(context)
                 .load(Uri.parse(File.Picture))
                 .into(binding.imageView);
+//            binding.imageView.setImageURI(Uri.parse(File.Picture));
         }
         binding.counter.setText(String.valueOf(position+1));
         binding.layout.setOnLongClickListener(v->{
@@ -77,9 +80,22 @@ public class Eyob extends ArrayAdapter<file> {
             return true;
         });
         binding.call.setOnClickListener(v->{
+            String phoneNumber =File.Password;
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + phoneNumber));
+            getContext().startActivity(intent);
+
             Toast.makeText(context, "Calling........", Toast.LENGTH_SHORT).show();
         });
         binding.message.setOnClickListener(v->{
+            String phoneNumber = File.Password;
+            String message = "Hello! This is a pre-filled message.";
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("smsto:" + phoneNumber)); // Use "smsto:" for SMS
+//            intent.putExtra("sms_body", message);
+            context.startActivity(intent);
+
             Toast.makeText(context, "Sending........", Toast.LENGTH_SHORT).show();
         });
 
@@ -89,8 +105,8 @@ public class Eyob extends ArrayAdapter<file> {
     ActionMode.Callback actionmodecallback=new ActionMode.Callback() {
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            MenuInflater menuInflater=mode.getMenuInflater();
-            menuInflater.inflate(R.menu.show,menu);
+            MenuInflater menuInflater = mode.getMenuInflater();
+            menuInflater.inflate(R.menu.show, menu);
             return true;
         }
 
@@ -103,7 +119,22 @@ public class Eyob extends ArrayAdapter<file> {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             int a=item.getItemId();
             if(a==R.id.action_delete){
-                onClick(currentPosition);
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Confirm")
+                        .setMessage("Are you sure you want to proceed?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+
+                            onClick(currentPosition);
+
+                        })
+                        .setNegativeButton("No", (dialog, which) -> {
+                            // Handle "No" button
+                            dialog.dismiss();
+                        })
+                        .show();
+
+
             } else if(a==R.id.action_Edit){
                 deleter();
             }
